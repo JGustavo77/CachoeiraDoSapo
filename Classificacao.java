@@ -3,17 +3,13 @@ public enum Classificacao {
     SUSPEITO,
     CUMPLICE,
     ASSASSINO;
-    
-    public static Classificacao Classificar(int respostasPositivas) {
-        if (respostasPositivas == 2) {
-            return Classificacao.SUSPEITO;
-        } else if (respostasPositivas == 3 || respostasPositivas == 4) {
-            return Classificacao.CUMPLICE;
+
+     public static Classificacao Classificar(int respostasPositivas) {
+        return switch (respostasPositivas) {
+            case 2 -> SUSPEITO;
+            case 3, 4 -> CUMPLICE;
+            case 5 -> ASSASSINO;
+            default -> INOCENTE;
+        };
     }
-    if (respostasPositivas == 5) {
-        return Classificacao.ASSASSINO;
-    } else {
-        return Classificacao.INOCENTE;
-    }
-}
 }
